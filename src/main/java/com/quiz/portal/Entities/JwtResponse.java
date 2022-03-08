@@ -1,6 +1,12 @@
 package com.quiz.portal.Entities;
 
-public class JwtResponse {
+import java.io.Serializable;
+
+public class JwtResponse implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String token;
 
 	public JwtResponse() {

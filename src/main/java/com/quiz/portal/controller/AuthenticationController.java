@@ -1,5 +1,7 @@
 package com.quiz.portal.controller;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -8,16 +10,20 @@ import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.quiz.portal.Entities.JwtRequest;
 import com.quiz.portal.Entities.JwtResponse;
+import com.quiz.portal.Entities.User;
 import com.quiz.portal.config.JwtUtils;
 import com.quiz.portal.service.UserSecurityService;
 
 @RestController
+@CrossOrigin
 public class AuthenticationController {
 	
 	@Autowired
@@ -50,7 +56,12 @@ public class AuthenticationController {
 		}
 		UserDetails user=userSecurityService.loadUserByUsername(jwtRequest.getUserName());
 		String token=jwtUtils.generateToken(user);
-		System.out.println("toke is "+token);
 		return ResponseEntity.ok(new JwtResponse(token));
+	}
+	
+	@GetMapping("/current-user")
+	public User getCurrentUser(Principal principal) {
+		UserDetails user=userSecurityService.loadUserByUsername(principal.getName());
+		return (User)user;
 	}
 }

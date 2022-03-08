@@ -22,8 +22,9 @@ import com.quiz.portal.service.UserServiceImpl;
 
 @RestController
 @RequestMapping("/user")
-@CrossOrigin
+@CrossOrigin("*")
 public class UserController {
+
 	
 	@Autowired
 	private UserServiceImpl userService;
@@ -46,6 +47,7 @@ public class UserController {
 	}
 	@GetMapping("/test")
 	public String getDataFromServer() {
+		System.out.println("reached!!");
 		return "successfull msg gg";
 	}
 }

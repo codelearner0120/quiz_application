@@ -14,6 +14,7 @@ import com.quiz.portal.pojo.UserResponse;
 import com.quiz.portal.repository.RoleRepository;
 import com.quiz.portal.repository.userRepository;
 
+import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
 
 @Service

@@ -32,9 +32,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	
 	
-
-	@Override
 	@Bean
+	@Override
 	public AuthenticationManager authenticationManagerBean() throws Exception {
 		return super.authenticationManagerBean();
 	}
@@ -60,7 +59,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.cors()
 			.disable()
 			.authorizeRequests()
-			.antMatchers("/generate-token","/user/").permitAll()
+			.antMatchers("/generate-token").permitAll()
+			.antMatchers("/user/adduser").permitAll()
+//			.antMatchers("/current-user").permitAll()
 			.antMatchers(HttpMethod.OPTIONS).permitAll()
 			.anyRequest().authenticated()
 			.and()
