@@ -16,8 +16,8 @@ import com.quiz.portal.Entities.Quiz;
 import com.quiz.portal.service.QuizService;
 
 @RestController
-@RequestMapping("/quiz")
 @CrossOrigin("*")
+@RequestMapping("/quiz")
 public class QuizController {
 	
 	@Autowired
@@ -25,6 +25,7 @@ public class QuizController {
 	
 	@PostMapping("/")
 	public ResponseEntity<Quiz> addQuiz(@RequestBody Quiz quiz){
+		System.out.println(quiz.toString());
 		return ResponseEntity.ok(quizService.addQuiz(quiz));
 	}
 	

@@ -80,5 +80,9 @@ public class Quiz {
 	public void setQuestion(Set<Question> question) {
 		this.question = question;
 	}	
-	
+	@Override
+	public String toString() {
+		return "Quiz [title=" + title + ", description=" + description + ", noOfQuestion=" + noOfQuestion
+				+ ", maxMarks=" + maxMarks + ", active=" + active + "]";
+	}
 }

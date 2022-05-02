@@ -15,6 +15,7 @@ public class QuizService {
 	private QuizRepository quizRepository;
 	
 	public Quiz addQuiz(Quiz quiz) {
+		System.out.println("Going to save! "+quiz.toString());
 		return quizRepository.save(quiz);
 	}
 	
@@ -29,8 +30,10 @@ public class QuizService {
 	public Quiz getQuiz(Long quizId) {
 		return quizRepository.findByQuizId(quizId);
 	}
-	public void delete(long quizId) {
-		System.out.println("We are deleting quizId "+quizId);
-		quizRepository.deleteById(quizId);
+	public void delete(Long quizId) {
+		Quiz quiz=new Quiz();
+		quiz.setQuizId(quizId);
+		quizRepository.delete(quiz);
+		System.out.println("deleted!");
 	}
 }

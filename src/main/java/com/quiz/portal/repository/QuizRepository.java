@@ -13,4 +13,5 @@ public interface QuizRepository extends JpaRepository<Quiz, Long>{
 	public List<Quiz> findAll();
 	public Quiz findByQuizId(Long id);
 	public void deleteByQuizId(Long qid);
+	public void delete(Quiz quiz);
 }

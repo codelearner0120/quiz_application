@@ -17,12 +17,10 @@ public class UserSecurityService implements UserDetailsService{
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		System.out.println("userName came here!");
 		User user=userRepository.findByUserName(username);
 		if(user==null) {
 			throw new UsernameNotFoundException("User not found!");
 		}
-		System.out.println("user goes from here "+username);
 		return user;
 	}
 
