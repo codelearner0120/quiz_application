@@ -25,6 +25,10 @@ public class CategoryService {
 		return categoryRepository.save(category);
 	}
 	
+	public Category updateCategory(Category category) {
+		return categoryRepository.save(category);
+	}
+	
 	public void deletCategory(Category category) {
 		categoryRepository.delete(category);
 	}

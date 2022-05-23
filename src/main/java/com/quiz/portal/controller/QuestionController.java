@@ -22,10 +22,14 @@ import com.quiz.portal.Entities.Quiz;
 import com.quiz.portal.repository.QuizRepository;
 import com.quiz.portal.service.QuestionService;
 
+import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
+
 
 @RestController
 @RequestMapping("/question")
 @CrossOrigin("*")
+@Slf4j
 public class QuestionController {
 
 	@Autowired
@@ -33,6 +37,8 @@ public class QuestionController {
 	
 	@Autowired
 	private QuizRepository quizRepository;
+	
+	
 	
 	@PostMapping("/")
 	public ResponseEntity<Question> addQuestion(@RequestBody Question question){
@@ -47,6 +53,7 @@ public class QuestionController {
 	// to get all question of any quiz	
 	@GetMapping("quiz/{quizId}")
 	public ResponseEntity<?> getAllQuestionOfQuiz(@PathVariable("quizId") Long quizId ){
+		
 		Quiz quiz=quizRepository.findByQuizId(quizId);
 		Set<Question> questions=quiz.getQuestion();
 		List<Question> result=new ArrayList(questions);
