@@ -47,7 +47,6 @@ public class UserController {
 	}
 	@GetMapping("/test")
 	public String getDataFromServer() {
-		System.out.println("reached!!");
 		return "successfull msg gg";
 	}
 }
